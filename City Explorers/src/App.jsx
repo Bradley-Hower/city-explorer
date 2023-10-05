@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react';
 import './App.css'
+import axios from 'axios';
 
-function App() {
-  const [count, setCount] = useState(0)
+const API_KEY = import.meta.env.VITE_LOCATIONIQ_API_KEY;
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+class App extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      searchQuery: '',
+      location: null,
+    }
+  }
+
+  setSearchQuery = (query) => {
+    this.setState({ searchQuery : query });
+  }
+
+  handleForm = (e) => {
+    e.preventDefault();
+    axios.get(`https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.searchQuery}SEARCH_STRING&format=json
+    `)
+      .then(response => {
+        console.log('SUCCESS: ', response.data);
+        this.setState({ location : response.data[0]});
+      }).catch(error => {
+        console.log('Conncetion not quite right', error);
+      });
+  }
+
+  handleChange = (e) => {
+    this.setState({ searchQuery : e.target.value });
+  }
+
+  render() {
+    return(
+      <>
+        <header>
+          <h1>CITY EXPLORER</h1>
+        </header>
+
+        <form onSubmit={this.handleForm}>
+        <input placeholder='Search any city...' type='text' name='city' onChange={this.handleChange}/>
+        <button type='submit'>Search</button>
+
+        </form>
+        {/* Are the browser router names significant? */}
+      </>
+    )
+  }
 }
 
 export default App
