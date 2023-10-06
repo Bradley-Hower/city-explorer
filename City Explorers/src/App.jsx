@@ -3,6 +3,8 @@ import './App.css'
 import axios from 'axios';
 import Explorer from './component/Explorer';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import ErrorAlert from './component/ErrorAlert';
 
 const API_KEY = import.meta.env.VITE_LOCATIONIQ_API_KEY;
 
@@ -12,7 +14,14 @@ class App extends React.Component {
     this.state = {
       searchQuery: '',
       location: null,
+      errorcode: null,
+      showForm: false,
     }
+  }
+
+
+  toggleForm = () => {
+    this.setState({ showForm: !this.state.showForm});
   }
 
   setSearchQuery = (query) => {
@@ -22,12 +31,13 @@ class App extends React.Component {
   handleForm = (e) => {
     e.preventDefault();
     axios.get(`https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.searchQuery}&format=json`)
-    
       .then(response => {
         console.log('SUCCESS: ', response.data);
         this.setState({ location : response.data[0]});
       }).catch(error => {
-        console.log('Connection not quite right', error);
+        console.log('Connection not quite right', error.stack.status);
+        // this.setState({errorcode: error.stack.response.status});
+        this.setState({showForm: true});
       });
   }
 
@@ -36,7 +46,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log({location})
     return(
       <>
         <header>
@@ -47,15 +56,16 @@ class App extends React.Component {
         <BrowserRouter>
         <form onSubmit={this.handleForm}>
         <input placeholder='Search any city...' type='text' name='city' onChange={this.handleChange}/>
-        <button type='submit'>
+        <Button type='submit' variant='light'>
           <Link to='/search'>Explore</Link>
-        </button>
+        </Button>
         </form>
           <Routes>
             <Route exact path='/search' element={<Explorer location={this.state.location} query={this.state.searchQuery} />} />
             <Route path='/' element={<p>Please enter a location.</p>} />
           </Routes>
         </BrowserRouter>
+        <ErrorAlert showForm={this.state.showForm} toggleForm={this.toggleForm}/>
       </>
     )
   }
