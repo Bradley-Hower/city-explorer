@@ -13,9 +13,9 @@ class App extends React.Component {
     super();
     this.state = {
       searchQuery: '',
+      showForm: false,
       location: null,
       errorcode: null,
-      showForm: false,
     }
   }
 
@@ -35,8 +35,9 @@ class App extends React.Component {
         console.log('SUCCESS: ', response.data);
         this.setState({ location : response.data[0]});
       }).catch(error => {
-        console.log('Connection not quite right', error.stack.status);
-        // this.setState({errorcode: error.stack.response.status});
+        console.log('Connection not quite right', error.response.status);
+        // console.log('Connection not quite right', error);
+        this.setState({errorcode: error});
         this.setState({showForm: true});
       });
   }
@@ -65,7 +66,7 @@ class App extends React.Component {
             <Route path='/' element={<p>Please enter a location.</p>} />
           </Routes>
         </BrowserRouter>
-        <ErrorAlert showForm={this.state.showForm} toggleForm={this.toggleForm}/>
+        <ErrorAlert showForm={this.state.showForm} toggleForm={this.toggleForm} errorcode={this.state.errorcode}/>
       </>
     )
   }
