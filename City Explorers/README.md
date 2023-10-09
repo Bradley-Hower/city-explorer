@@ -25,28 +25,31 @@ To test each iteration, terminal run `npm run build`.
 
 ### Option 2
 
-For easier iteration, replace the last line of the above stack and use vite instead to install React. `npm create vite@latest`
+For easier iteration, replace the last line of the above stack and use Vite instead to install React. `npm create vite@latest`
 
 Whenever you want to test an iteration using vite as the server, in the terminal run `npm run dev`.
 
 ### Remaining Stack
 
-React bootstrap `npm install react-bootstrap bootstrap`
-Axios HTTP client  `npm install axios`
-React Router `npm install react-router-dom`
++ React bootstrap `npm install react-bootstrap bootstrap`
++ Axios HTTP client  `npm install axios`
++ React Router `npm install react-router-dom`
 
 Whenever you want to test an iteration using vite as the server, in the terminal run `npm run dev`.
 
 For development documentation, see:
 
-![https://reactrouter.com/en/main](https://reactrouter.com/en/main)
+[https://reactrouter.com/en/main](https://reactrouter.com/en/main)
 
-![https://react-bootstrap.netlify.app/docs/getting-started/introduction/](https://react-bootstrap.netlify.app/docs/getting-started/introduction/)
+[https://react-bootstrap.netlify.app/docs/getting-started/introduction/](https://react-bootstrap.netlify.app/docs/getting-started/introduction/)
 
-To obtain your own API key, see ![https://locationiq.com/docs#search-forward-geocoding](https://locationiq.com/docs#search-forward-geocoding).
+To obtain your own API key, see [https://locationiq.com/docs#search-forward-geocoding](https://locationiq.com/docs#search-forward-geocoding).
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+
+Technologies: Node.js, React, Bootstrap, Axios, React Router
+
+![Architecture HTTP Model](/src/assets/model.png)
 
 ## Change Log
 
