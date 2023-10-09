@@ -15,7 +15,8 @@ class Explorer extends React.Component {
 
     return(
       <main>
-        <Link to='/'>Go Home</Link>
+        <Link to='/' onClick={this.props.clearlocation}>Go Home</Link>
+        {/* <Link to='/' onClick={this.props.clearLocation}>Go Home</Link> */}
         <section>
           <h1>Maps</h1>
           <p>{this.props.searchQuery}</p>

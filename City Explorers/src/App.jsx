@@ -2,9 +2,10 @@ import React from 'react';
 import './App.css'
 import axios from 'axios';
 import Explorer from './component/Explorer';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import ErrorAlert from './component/ErrorAlert';
+
 
 const API_KEY = import.meta.env.VITE_LOCATIONIQ_API_KEY;
 
@@ -19,13 +20,16 @@ class App extends React.Component {
     }
   }
 
-
   toggleForm = () => {
     this.setState({ showForm: !this.state.showForm});
   }
 
   setSearchQuery = (query) => {
     this.setState({ searchQuery : query });
+  }
+
+  clearLocation = () => {
+    this.setState({ location: null});
   }
 
   handleForm = (e) => {
@@ -52,17 +56,21 @@ class App extends React.Component {
         <header>
           <h1>CITY EXPLORER</h1>
         </header>
+      
 
 
         <BrowserRouter>
         <form onSubmit={this.handleForm}>
         <input placeholder='Search any city...' type='text' name='city' onChange={this.handleChange}/>
+
         <Button type='submit' variant='light'>
-          <Link to='/search'>Explore</Link>
+          Explore
         </Button>
+
         </form>
+        {this.state.location && <Navigate to='/search' />}
           <Routes>
-            <Route exact path='/search' element={<Explorer location={this.state.location} query={this.state.searchQuery} />} />
+            <Route exact path='/search' element={<Explorer clearlocation={this.clearLocation} location={this.state.location} query={this.state.searchQuery} />} />
             <Route path='/' element={<p>Please enter a location.</p>} />
           </Routes>
         </BrowserRouter>

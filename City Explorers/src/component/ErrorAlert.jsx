@@ -16,7 +16,7 @@ class ErrorAlert extends React.Component{
           <Modal.Header closeButton>
             <Modal.Title>Connectivitiy Error: {this.props.errorcode ? this.props.errorcode.code : 'No error detected'}</Modal.Title>
           </Modal.Header>
-          <Modal.Body>{this.props.errorcode ? this.props.errorcode.message : 'No error detected'}.{"\n"}{"\n"}
+          <Modal.Body>{this.props.errorcode ? this.props.errorcode.message : 'No error detected'}. {"\n"}{"\n"}
           {this.props.errorcode ? this.props.errorcode.response.data.error : 'No error detected'}.</Modal.Body>
         </Modal>
       </>
