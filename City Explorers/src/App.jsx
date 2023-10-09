@@ -1,35 +1,83 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react';
 import './App.css'
+import axios from 'axios';
+import Explorer from './component/Explorer';
+import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import ErrorAlert from './component/ErrorAlert';
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+const API_KEY = import.meta.env.VITE_LOCATIONIQ_API_KEY;
+
+class App extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      searchQuery: '',
+      showForm: false,
+      location: null,
+      errorcode: null,
+    }
+  }
+
+  toggleForm = () => {
+    this.setState({ showForm: !this.state.showForm});
+  }
+
+  setSearchQuery = (query) => {
+    this.setState({ searchQuery : query });
+  }
+
+  clearLocation = () => {
+    this.setState({ location: null});
+  }
+
+  handleForm = (e) => {
+    e.preventDefault();
+    axios.get(`https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.searchQuery}&format=json`)
+      .then(response => {
+        console.log('SUCCESS: ', response.data);
+        this.setState({ location : response.data[0]});
+      }).catch(error => {
+        console.log('Connection not quite right', error.response.status);
+        // console.log('Connection not quite right', error);
+        this.setState({errorcode: error});
+        this.setState({showForm: true});
+      });
+  }
+
+  handleChange = (e) => {
+    this.setState({ searchQuery : e.target.value });
+  }
+
+  render() {
+    return(
+      <>
+        <header>
+          <h1>CITY EXPLORER</h1>
+        </header>
+      
+
+
+        <BrowserRouter>
+        <form onSubmit={this.handleForm}>
+        <input placeholder='Search any city...' type='text' name='city' onChange={this.handleChange}/>
+
+        <Button type='submit' variant='light'>
+          Explore
+        </Button>
+
+        </form>
+        {this.state.location && <Navigate to='/search' />}
+          <Routes>
+            <Route exact path='/search' element={<Explorer clearlocation={this.clearLocation} location={this.state.location} query={this.state.searchQuery} />} />
+            <Route path='/' element={<p>Please enter a location.</p>} />
+          </Routes>
+        </BrowserRouter>
+        <ErrorAlert showForm={this.state.showForm} toggleForm={this.toggleForm} errorcode={this.state.errorcode}/>
+      </>
+    )
+  }
 }
 
 export default App
