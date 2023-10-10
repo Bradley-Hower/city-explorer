@@ -49,7 +49,8 @@ To obtain your own API key, see [https://locationiq.com/docs#search-forward-geoc
 
 Technologies: Node.js, React, Bootstrap, Axios, React Router
 
-![Architecture HTTP Model](/src/assets/model.png)
+![Architecture HTTP Model](https://github.com/Bradley-Hower/city-explorer/assets/139923955/94a5069e-4265-46fe-8999-cba2c9285ae1)
+
 
 ## Change Log
 
