@@ -3,8 +3,8 @@ import './App.css'
 import axios from 'axios';
 import Explorer from './component/Explorer';
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 import ErrorAlert from './component/ErrorAlert';
+import SearchForm from './component/SearchForm';
 
 
 const API_KEY = import.meta.env.VITE_LOCATIONIQ_API_KEY;
@@ -36,11 +36,10 @@ class App extends React.Component {
     e.preventDefault();
     axios.get(`https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.searchQuery}&format=json`)
       .then(response => {
-        console.log('SUCCESS: ', response.data);
+        // console.log('SUCCESS: ', response.data);
         this.setState({ location : response.data[0]});
       }).catch(error => {
-        console.log('Connection not quite right', error.response.status);
-        // console.log('Connection not quite right', error);
+        // console.log('Connection not quite right', error.response.status);
         this.setState({errorcode: error});
         this.setState({showForm: true});
       });
@@ -56,19 +55,9 @@ class App extends React.Component {
         <header>
           <h1>CITY EXPLORER</h1>
         </header>
-      
-
-
         <BrowserRouter>
-        <form onSubmit={this.handleForm}>
-        <input placeholder='Search any city...' type='text' name='city' onChange={this.handleChange}/>
-
-        <Button type='submit' variant='light'>
-          Explore
-        </Button>
-
-        </form>
-        {this.state.location && <Navigate to='/search' />}
+          <SearchForm handleform={this.handleForm} handlechange={this.handleChange}/>
+          {this.state.location && <Navigate to='/search' />}
           <Routes>
             <Route exact path='/search' element={<Explorer clearlocation={this.clearLocation} location={this.state.location} query={this.state.searchQuery} />} />
             <Route path='/' element={<p>Please enter a location.</p>} />
