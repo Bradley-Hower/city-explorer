@@ -5,18 +5,19 @@ import Explorer from './component/Explorer';
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import ErrorAlert from './component/ErrorAlert';
 import SearchForm from './component/SearchForm';
-
+import Weather from './component/Weather';
 
 const API_KEY = import.meta.env.VITE_LOCATIONIQ_API_KEY;
 
 class App extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       searchQuery: '',
       showForm: false,
       location: null,
       errorcode: null,
+      weather: [],
     }
   }
 
@@ -30,6 +31,7 @@ class App extends React.Component {
 
   clearLocation = () => {
     this.setState({ location: null});
+    this.weather({ weather: null});
   }
 
   handleForm = (e) => {
@@ -49,6 +51,18 @@ class App extends React.Component {
     this.setState({ searchQuery : e.target.value });
   }
 
+  showWeather = async () => {
+    try {
+      console.log('here')
+      const res = await axios.get(`${import.meta.env.VITE_SERVER}/weather?type=${this.state.searchQuery}&loninput=-122.330062&latinput=47.6038321`);
+      this.setState({weather: res.data});
+    }
+    catch (error) {
+      this.setState({errorcode: error});
+      this.setState({showForm: true});
+    }
+  }
+
   render() {
     return(
       <>
@@ -59,7 +73,7 @@ class App extends React.Component {
           <SearchForm handleform={this.handleForm} handlechange={this.handleChange}/>
           {this.state.location && <Navigate to='/search' />}
           <Routes>
-            <Route exact path='/search' element={<Explorer clearlocation={this.clearLocation} location={this.state.location} query={this.state.searchQuery} />} />
+            <Route exact path='/search' element={<><Explorer clearlocation={this.clearLocation} location={this.state.location} query={this.state.searchQuery} /><Weather showweather={this.showWeather} weather={this.state.weather} location={this.state.location}/></>}/>
             <Route path='/' element={<p>Please enter a location.</p>} />
           </Routes>
         </BrowserRouter>

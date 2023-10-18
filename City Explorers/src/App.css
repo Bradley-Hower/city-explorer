@@ -1,7 +1,7 @@
 body {
   background-image: url(assets/earth.jpg);
   background-size: auto;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-position-x: center;
   background-size: 100% auto;
 }
@@ -56,3 +56,4 @@ body {
   top: -3px;
 
 }
+
