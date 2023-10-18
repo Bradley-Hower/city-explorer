@@ -1,7 +1,7 @@
-# Project Name
+# City Explorers
 
 **Author**: Bradley Hower
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 2.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
 
@@ -57,15 +57,21 @@ Technologies: Node.js, React, Bootstrap, Axios, React Router
 
 ## Change Log
 
-10-06-2023 13:30 - Geocoding is now working. Issues connecting to API now resolvd. Immediate features are latitude and longitude.
-
+10-06-2023 - Geocoding is now working. Issues connecting to API now resolvd. Immediate features are latitude and longitude.
 10-06-2023 14:00 - Location map image feature added. Loads map image of location upon page load.
-
 10-06-2023 16:00 - Bootstrap styling added to elements (buttons, image thumbnail).
-
 10-08-2023 14:00 - Error Handler added. Proper error codes pulled from error response properties and added to modal component.
-
 10-08-2023 17:00 - Forward navigation now fixed. Link element does not work due to delayed response from submit. React does not await the completion of submit before running Link, thus loads a null location.
+2023-10-16 20:00  Weather Back-end Componenet
+2023-10-17 13:30  Weather Front-end componennt
+2023-10-17 14:00 Error Handling
+2023-10-17 17:00 Initilized Git
+2023-10-17 17:30 Launched Server on Redender.
+2023-10-17 18:00 Launched Netlify
+
+## Lighthouse
+
+![image](https://github.com/Bradley-Hower/city-explorer-server/assets/139923955/80bf86c6-2eab-4871-8345-4df2ecdabce9)
 
 ## Credit and Collaborations
 
@@ -96,6 +102,8 @@ Finish time: 2:00 PM
 Actual time needed to complete: 30 minutes
 
 ---
+Part II ========
+---
 
 Name of feature: Bootstrap styling
 
@@ -118,3 +126,51 @@ Start time: 12:00 PM
 Finish time: 2:00 PM
 
 Actual time needed to complete: 2 hour
+
+---
+
+Name of feature: Set up your server repository.
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 12:00
+
+Finish time: 1:00
+
+Actual time needed to complete: 1 hour
+
+---
+
+Name of feature: Weather Backend API
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 2:00
+
+Finish time: 8:00
+
+Actual time needed to complete: 6 hours 
+
+---
+
+Name of feature: Weather Front-end Componenet
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 10:30
+
+Finish time: 1:30
+
+Actual time needed to complete: 3 hours
+
+---
+
+Name of feature: Error Handling
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 1:00
+
+Finish time: 2:00
+
+Actual time needed to complete: 1 hour
