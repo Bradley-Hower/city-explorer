@@ -1,6 +1,7 @@
 # City Explorers
 
 **Author**: Bradley Hower
+
 **Version**: 2.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
@@ -58,15 +59,25 @@ Technologies: Node.js, React, Bootstrap, Axios, React Router
 ## Change Log
 
 10-06-2023 - Geocoding is now working. Issues connecting to API now resolvd. Immediate features are latitude and longitude.
+
 10-06-2023 14:00 - Location map image feature added. Loads map image of location upon page load.
+
 10-06-2023 16:00 - Bootstrap styling added to elements (buttons, image thumbnail).
+
 10-08-2023 14:00 - Error Handler added. Proper error codes pulled from error response properties and added to modal component.
+
 10-08-2023 17:00 - Forward navigation now fixed. Link element does not work due to delayed response from submit. React does not await the completion of submit before running Link, thus loads a null location.
+
 2023-10-16 20:00  Weather Back-end Componenet
+
 2023-10-17 13:30  Weather Front-end componennt
+
 2023-10-17 14:00 Error Handling
+
 2023-10-17 17:00 Initilized Git
+
 2023-10-17 17:30 Launched Server on Redender.
+
 2023-10-17 18:00 Launched Netlify
 
 ## Lighthouse
