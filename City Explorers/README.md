@@ -51,6 +51,10 @@ Technologies: Node.js, React, Bootstrap, Axios, React Router
 
 ![Architecture HTTP Model](https://github.com/Bradley-Hower/city-explorer/assets/139923955/94a5069e-4265-46fe-8999-cba2c9285ae1)
 
+Server
+![model2](https://github.com/Bradley-Hower/city-explorer/assets/139923955/64bcc8fc-55b4-4454-b901-9909fd5c1fc8)
+
+
 ## Change Log
 
 10-06-2023 13:30 - Geocoding is now working. Issues connecting to API now resolvd. Immediate features are latitude and longitude.
