@@ -51,7 +51,7 @@ Technologies: Node.js, React, Bootstrap, Axios, React Router
 
 ![Architecture HTTP Model](https://github.com/Bradley-Hower/city-explorer/assets/139923955/94a5069e-4265-46fe-8999-cba2c9285ae1)
 
-Server
+### Back-end Server
 
 ![Architecture HTTP Back-end Server Model](https://github.com/Bradley-Hower/city-explorer/assets/139923955/a48178a0-cbc9-404d-9c3f-8e37db2ed616)
 
