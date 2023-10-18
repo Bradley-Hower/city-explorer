@@ -31,15 +31,17 @@ class App extends React.Component {
 
   clearLocation = () => {
     this.setState({ location: null});
-    this.weather({ weather: null});
+    this.setState({ weather: null});
   }
 
   handleForm = (e) => {
     e.preventDefault();
     axios.get(`https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.searchQuery}&format=json`)
       .then(response => {
-        // console.log('SUCCESS: ', response.data);
+        console.log('SUCCESS: ', response.data);
         this.setState({ location : response.data[0]});
+        this.setState({ lat : response.data[0].lat});
+        this.setState({ lat : response.data[0].lon});
       }).catch(error => {
         // console.log('Connection not quite right', error.response.status);
         this.setState({errorcode: error});
