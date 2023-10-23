@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import ErrorAlert from './component/ErrorAlert';
 import SearchForm from './component/SearchForm';
 import Weather from './component/Weather';
+import Movies from './component/Movies';
 
 const API_KEY = import.meta.env.VITE_LOCATIONIQ_API_KEY;
 
@@ -18,6 +19,9 @@ class App extends React.Component {
       location: null,
       errorcode: null,
       weather: [],
+      lat: null,
+      lon: null,
+      movielist: [],
     }
   }
 
@@ -38,15 +42,26 @@ class App extends React.Component {
     e.preventDefault();
     axios.get(`https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.searchQuery}&format=json`)
       .then(response => {
-        console.log('SUCCESS: ', response.data);
         this.setState({ location : response.data[0]});
         this.setState({ lat : response.data[0].lat});
         this.setState({ lat : response.data[0].lon});
+        this.handleMovies();
       }).catch(error => {
         // console.log('Connection not quite right', error.response.status);
         this.setState({errorcode: error});
         this.setState({showForm: true});
       });
+  }
+
+  handleMovies = async () => {
+    try{
+      const movies = await axios.get(`${import.meta.env.VITE_SERVER}/movies?cityquery=${this.state.searchQuery}`);
+      this.setState({movielist: movies.data});
+    }
+    catch (error){
+      this.setState({errorcode: error});
+      this.setState({showForm: true});
+    }
   }
 
   handleChange = (e) => {
@@ -56,7 +71,7 @@ class App extends React.Component {
   showWeather = async () => {
     try {
       console.log('here')
-      const res = await axios.get(`${import.meta.env.VITE_SERVER}/weather?type=${this.state.searchQuery}&loninput=-122.330062&latinput=47.6038321`);
+      const res = await axios.get(`${import.meta.env.VITE_SERVER}/weather?city=${this.state.searchQuery}&lat=${this.state.lat}&lon${this.state.lon}`);
       this.setState({weather: res.data});
     }
     catch (error) {
@@ -79,7 +94,11 @@ class App extends React.Component {
             <Route path='/' element={<p>Please enter a location.</p>} />
           </Routes>
         </BrowserRouter>
-        <ErrorAlert showForm={this.state.showForm} toggleForm={this.toggleForm} errorcode={this.state.errorcode}/>
+        {this.state.movielist.length > 0 && 
+        <Movies movielist={this.state.movielist}/>
+        }
+
+        <ErrorAlert showForm={this.state.showForm} toggleForm={this.state.toggleForm} errorcode={this.state.errorcode}/>
       </>
     )
   }

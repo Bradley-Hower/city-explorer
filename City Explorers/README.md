@@ -2,7 +2,7 @@
 
 **Author**: Bradley Hower
 
-**Version**: 2.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 3.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
 
@@ -56,6 +56,9 @@ Technologies: Node.js, React, Bootstrap, Axios, React Router
 
 ![Architecture HTTP Back-end Server Model](https://github.com/Bradley-Hower/city-explorer/assets/139923955/a48178a0-cbc9-404d-9c3f-8e37db2ed616)
 
+### Server with Two APIs
+
+
 ## Change Log
 
 10-06-2023 - Geocoding is now working. Issues connecting to API now resolvd. Immediate features are latitude and longitude.
@@ -79,6 +82,12 @@ Technologies: Node.js, React, Bootstrap, Axios, React Router
 2023-10-17 17:30 Launched Server on Redender.
 
 2023-10-17 18:00 Launched Netlify
+
+2023-10-22 2:30 Add Weatherbit API
+
+2023-10-22 16:35 Add Movie API
+
+2023-10-23 10:00 Bootstrap for Movies
 
 ## Lighthouse
 
@@ -185,3 +194,42 @@ Start time: 1:00
 Finish time: 2:00
 
 Actual time needed to complete: 1 hour
+
+---
+Part III ========
+
+---
+
+Name of feature: Add Weatherbit API
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 2:30
+
+Finish time: 3:15
+
+Actual time needed to complete: 45 minutes
+
+---
+
+Name of feature: Add Movie API
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 16:35
+
+Finish time: 10:00
+
+Actual time needed to complete: 3 hours
+
+---
+
+Name of feature: Bootstrap for Movies
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 10:00
+
+Finish time: 11:10
+
+Actual time needed to complete: 1 hour 10 minutes
