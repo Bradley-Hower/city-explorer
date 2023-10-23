@@ -54,9 +54,11 @@ Technologies: Node.js, React, Bootstrap, Axios, React Router
 
 ### Back-end Server
 
-![Architecture HTTP Back-end Server Model](https://github.com/Bradley-Hower/city-explorer/assets/139923955/a48178a0-cbc9-404d-9c3f-8e37db2ed616)
+![Architecture HTTP Back-end Server Model 2](https://github.com/Bradley-Hower/city-explorer/assets/139923955/a48178a0-cbc9-404d-9c3f-8e37db2ed616)
 
 ### Server with Two APIs
+
+![Architecture HTTP Back-end Server Model 3](https://github.com/Bradley-Hower/city-explorer/assets/139923955/a1b6d513-4187-4929-a8b6-1dee947410e7)
 
 
 ## Change Log
@@ -91,7 +93,7 @@ Technologies: Node.js, React, Bootstrap, Axios, React Router
 
 ## Lighthouse
 
-![image](https://github.com/Bradley-Hower/city-explorer-server/assets/139923955/80bf86c6-2eab-4871-8345-4df2ecdabce9)
+![Lighhouse Score](https://github.com/Bradley-Hower/city-explorer/assets/139923955/598fb016-fa32-4373-a24a-ad71374abefe)
 
 ## Credit and Collaborations
 
