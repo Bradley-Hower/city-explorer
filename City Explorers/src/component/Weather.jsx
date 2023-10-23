@@ -8,8 +8,6 @@ class Weather extends React.Component{
     super(props);
   }
 
-  
-
   render(){
     return(
       <section>
@@ -27,7 +25,6 @@ class Weather extends React.Component{
                   </tr>
                 </thead>
           </Table>
-          {console.log(this.props.weather)}
           {this.props.weather.length > 0 && 
             this.props.weather.map(item => 
               <>
