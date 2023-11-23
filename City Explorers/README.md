@@ -2,7 +2,7 @@
 
 **Author**: Bradley Hower
 
-**Version**: 3.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 4.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
 
@@ -90,6 +90,10 @@ Technologies: Node.js, React, Bootstrap, Axios, React Router
 2023-10-22 16:35 Add Movie API
 
 2023-10-23 10:00 Bootstrap for Movies
+
+2023-11-22 19:24 Refactor Weather and Movies into own modules on back-end
+
+2023-11-22 23:06 Refactor front-end components using nesting for weather and movie items
 
 ## Lighthouse
 
@@ -235,3 +239,18 @@ Start time: 10:00
 Finish time: 11:10
 
 Actual time needed to complete: 1 hour 10 minutes
+
+---
+Part III ========
+---
+
+Name of feature: Refactor front-end components using nesting for weather and movie items
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 21:30
+
+Finish time: 23:00
+
+Actual time needed to complete: 1 hour 30 minutes
+

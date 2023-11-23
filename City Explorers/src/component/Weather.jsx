@@ -2,6 +2,8 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
+import { Row, Col } from 'react-bootstrap';
+import WeatherDay from './WeatherDay';
 
 class Weather extends React.Component{
   constructor(props){
@@ -26,18 +28,20 @@ class Weather extends React.Component{
                 </thead>
           </Table>
           {this.props.weather.length > 0 && 
-            this.props.weather.map(item => 
               <>
                 <Table striped bordered hover size="sm">
-                  <tbody>                
-                    <tr>
-                      <td>{item.date}</td>
-                      <td>{item.description}</td>
-                    </tr>
+                  <tbody>
+                  <Row xs={7} md={7} className="g-4">
+                    {this.props.weather.map((item, idx) => (
+                    <Col key={idx}>
+                      <WeatherDay date={item.date}  description={item.description}/>
+                    </Col>
+                  ))}
+                  </Row>
+
                   </tbody>
                 </Table>
               </>
-              )
           }
       
       </section>
