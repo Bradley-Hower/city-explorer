@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
-import { Row, Col } from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
 import WeatherDay from './WeatherDay';
 
 class Weather extends React.Component{
@@ -40,7 +40,9 @@ class Weather extends React.Component{
                   </Row>
 
                   </tbody>
+                  
                 </Table>
+
               </>
           }
       

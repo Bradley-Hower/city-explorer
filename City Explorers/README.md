@@ -2,7 +2,7 @@
 
 **Author**: Bradley Hower
 
-**Version**: 4.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 5.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
 
@@ -94,6 +94,8 @@ Technologies: Node.js, React, Bootstrap, Axios, React Router
 2023-11-22 19:24 Refactor Weather and Movies into own modules on back-end
 
 2023-11-22 23:06 Refactor front-end components using nesting for weather and movie items
+
+2023-11-27 23:57 Added Yelp API for restaurant searches
 
 ## Lighthouse
 
@@ -242,6 +244,7 @@ Actual time needed to complete: 1 hour 10 minutes
 
 ---
 Part III ========
+
 ---
 
 Name of feature: Refactor front-end components using nesting for weather and movie items
@@ -254,3 +257,19 @@ Finish time: 23:00
 
 Actual time needed to complete: 1 hour 30 minutes
 
+---
+Part IV ========
+
+---
+
+Name of feature: Added Yelp API for restaurant searches
+
+Estimate of time needed to complete: 3 hours
+
+Start time: 22:00
+
+Finish time: 23:57
+
+Actual time needed to complete: 2 hours
+
+---

@@ -7,6 +7,7 @@ import ErrorAlert from './component/ErrorAlert';
 import SearchForm from './component/SearchForm';
 import Weather from './component/Weather';
 import Movies from './component/Movies';
+import Restaurants from './component/Restaurants';
 
 const API_KEY = import.meta.env.VITE_LOCATIONIQ_API_KEY;
 
@@ -22,6 +23,7 @@ class App extends React.Component {
       lat: null,
       lon: null,
       movielist: [],
+      restaurantnames: [],
     }
   }
 
@@ -36,6 +38,9 @@ class App extends React.Component {
   clearLocation = () => {
     this.setState({ location: null});
     this.setState({ weather: null});
+    this.setState({ weathertimestamp: []});
+    this.setState({ movielist: []});
+    this.setState({restaurantnames: []});
   }
 
   handleForm = (e) => {
@@ -46,6 +51,7 @@ class App extends React.Component {
         this.setState({ lat : response.data[0].lat});
         this.setState({ lat : response.data[0].lon});
         this.handleMovies();
+        this.handleRestaurants();
       }).catch(error => {
         // console.log('Connection not quite right', error.response.status);
         this.setState({errorcode: error});
@@ -64,13 +70,24 @@ class App extends React.Component {
     }
   }
 
+  handleRestaurants = async () => {
+    try{
+    const restaurants = await axios.get(`${import.meta.env.VITE_SERVER}/restaurants?cityquery=${this.state.searchQuery}`)
+    this.setState({restaurantnames: restaurants.data})
+    }
+    catch (error){
+      this.setState({errorcode: error});
+      this.setState({showForm: true});
+    }
+  }
+
   handleChange = (e) => {
     this.setState({ searchQuery : e.target.value });
   }
 
   showWeather = async () => {
     try {
-      console.log('here')
+      console.log('here');
       const res = await axios.get(`${import.meta.env.VITE_SERVER}/weather?city=${this.state.searchQuery}&lat=${this.state.lat}&lon${this.state.lon}`);
       this.setState({weather: res.data});
     }
@@ -96,6 +113,9 @@ class App extends React.Component {
         </BrowserRouter>
         {this.state.movielist.length > 0 && 
         <Movies movielist={this.state.movielist}/>
+        }
+        {this.state.restaurantnames.length > 0 && 
+        <Restaurants restaurantnames={this.state.restaurantnames}/>
         }
 
         <ErrorAlert showForm={this.state.showForm} toggleForm={this.state.toggleForm} errorcode={this.state.errorcode}/>
